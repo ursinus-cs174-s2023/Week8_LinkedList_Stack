@@ -3,6 +3,7 @@
 
 LinkedList::LinkedList() {
     head = NULL;
+    N = 0;
 }
 
 LinkedList::~LinkedList() {
