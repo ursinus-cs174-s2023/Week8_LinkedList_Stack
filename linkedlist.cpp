@@ -22,18 +22,7 @@ LinkedList::~LinkedList() {
  * @param obj Object reference to add
  */
 void LinkedList::addFirst(void* obj) {
-    LinkedNode* node = new LinkedNode(obj);
-    if (head == NULL) {
-        // Edge case: The list is empty, so this new node becomes
-        // the head
-        head = node;
-    }
-    else {
-        // Add this new node to the front
-        node->next = head;
-        head = node;
-    }
-    N++;
+    // TODO: Fill this in
 }
 
 /**
@@ -43,32 +32,7 @@ void LinkedList::addFirst(void* obj) {
  * @param obj Object reference to remove
  */
 void LinkedList::remove(void* obj) {
-    if (head != NULL) {
-        // Only remove objects that exist
-        if (head->obj == obj) {
-            head = head->next;
-            N--;
-        }
-        else {
-            // The object might be somewhere in the middle
-            // TODO: Fill this in.  Remove the object reference
-            // if it exists in a node
-            LinkedNode* node = head;
-            bool found = false;
-            while (!found && node->next != NULL) {
-                if (node->next->obj == obj) {
-                    found = true;
-                    LinkedNode* toDelete = node->next;
-                    node->next = node->next->next;
-                    delete toDelete;
-                    N--;
-                }
-                else {
-                    node = node->next;
-                }
-            }
-        }
-    }
+    // TODO: Fill this in
 }
 
 /**
