@@ -22,17 +22,7 @@ LinkedList::~LinkedList() {
  * @param obj Object reference to add
  */
 void LinkedList::addFirst(void* obj) {
-    // NO matter what, make a new node
-    LinkedNode* newNode = new LinkedNode(obj);
-    N++;
-    if (head == NULL) {
-        // There's nothing in the list
-        head = newNode;
-    }
-    else {
-        newNode->next = head;
-        head = newNode;
-    }
+    //TODO: Fill this in
 }
 
 /**
@@ -66,17 +56,8 @@ void* LinkedList::removeFirst() {
  * @return void** 
  */
 void** LinkedList::toArray(int* NOut) {
-    void** arr = new void*[this->N];
-    *NOut = this->N;
-
-    // Loop through the linked list and copy in every element
-    LinkedNode* node = head;
-    for (int i = 0; i < this->N; i++) {
-        arr[i] = node->obj;
-        node = node->next;
-    }
-
-    return arr;
+    // TODO: Fill this in
+    return NULL;
 }
 
 
