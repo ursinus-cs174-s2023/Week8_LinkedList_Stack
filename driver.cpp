@@ -5,27 +5,20 @@ using namespace std;
 
 int main() {
     LinkedList list;
-    void* toRemove = NULL;
     for (int i = 0; i < 15; i++) {
         int* x = new int;
         *x = i*i;
-        if (i == 6) {
-            toRemove = x;
-            cout << "Will be removing " << *x << " from the list\n";
-        }
         list.addFirst(x);
     }
-    int i = 0;
-    // Remove something in the middle
-    list.remove(toRemove);
-    while (list.size() > 0) {
-        cout << "i = " << i << "\n";
-        int* x = (int*)list.removeFirst();
-        cout << *x << " ";
-        delete x;
-        i++;
+
+    int N;
+    void** arr = list.toArray(&N);
+    for (int i = 0; i < N; i++) {
+        cout << *((int*)arr[i]) << " ";
+        delete (int*)arr[i];
     }
     cout << "\n";
+    delete[] arr;
 
     return 0;
 }
