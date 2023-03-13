@@ -3,7 +3,6 @@
 
 LinkedList::LinkedList() {
     head = NULL;
-    N = 0;
 }
 
 LinkedList::~LinkedList() {
@@ -15,6 +14,16 @@ LinkedList::~LinkedList() {
     }
 }
 
+int LinkedList::size() {
+    int N = 0;
+    LinkedNode* node = head;
+    while(node != NULL) {
+        N++;
+        node = node->next;
+    }
+    return N;
+}
+
 /**
  * @brief Add an object reference to the beginning of the 
  * linked list
@@ -24,7 +33,6 @@ LinkedList::~LinkedList() {
 void LinkedList::addFirst(void* obj) {
     // NO matter what, make a new node
     LinkedNode* newNode = new LinkedNode(obj);
-    N++;
     if (head == NULL) {
         // There's nothing in the list
         head = newNode;
@@ -42,7 +50,25 @@ void LinkedList::addFirst(void* obj) {
  * @param obj Object reference to remove
  */
 void LinkedList::remove(void* obj) {
-    // TODO: Fill this in
+    int N = size();
+    if (head != NULL) {
+        if (head->obj == obj) {
+            removeFirst();
+        }
+        else {
+            LinkedNode* node = head;
+            while (node->next != NULL) {
+                if(node->next->obj == obj) {
+                    LinkedNode* temp = node->next;
+                    node->next = node->next->next;
+                    delete temp;
+                    N--;
+                    return;
+                }
+                node = node->next;
+            }
+        }
+    }
 }
 
 /**
@@ -54,8 +80,17 @@ void LinkedList::remove(void* obj) {
 void* LinkedList::removeFirst() {
     void* ret = NULL;
     // TODO: Fill this in
-
-    return ret;
+    if(head == NULL) {
+        return ret;
+    }
+    else {
+        ret = head->obj;
+        LinkedNode* next = head->next;
+        delete head;
+        head = next;
+        return ret;
+    }
+    //return ret;
 }
 
 /**
@@ -66,16 +101,17 @@ void* LinkedList::removeFirst() {
  * @return void** 
  */
 void** LinkedList::toArray(int* NOut) {
-    void** arr = new void*[this->N];
-    *NOut = this->N;
+    *NOut = size();
+    void** arr = new void*[*NOut];
 
     // Loop through the linked list and copy in every element
     LinkedNode* node = head;
-    for (int i = 0; i < this->N; i++) {
+    int i = 0;
+    while (node != NULL) {
         arr[i] = node->obj;
         node = node->next;
+        i++;
     }
-
     return arr;
 }
 
@@ -87,12 +123,9 @@ Stack::Stack() {
 }
 
 void Stack::push(void* obj) {
-    // TODO: Fill this in
+    list.addFirst(obj);
 }
 
 void* Stack::pop() {
-    void* ret = NULL;
-    // TODO: Fill this in
-
-    return ret;
+    return list.removeFirst();
 }

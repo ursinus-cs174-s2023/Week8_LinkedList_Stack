@@ -20,7 +20,6 @@ class LinkedNode {
 class LinkedList {
     private:
         LinkedNode* head;
-        int N;
     public:
         LinkedList();
         ~LinkedList();
@@ -30,9 +29,7 @@ class LinkedList {
          * 
          * @return int Number of elements
          */
-        int size() {
-            return N;
-        }
+        int size();
 
         /**
          * @brief Add an object reference to the beginning of the 
@@ -69,11 +66,13 @@ class LinkedList {
 
 
 class Stack {
+    private:
+        LinkedList list;
     public:
         Stack();
 
-        void push(void* obj);
-        void* pop();
+        void push(void* obj); // Adds obj to top
+        void* pop(); // Remove from top
 };
 
 #endif
