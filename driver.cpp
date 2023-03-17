@@ -11,14 +11,12 @@ int main() {
         list.addFirst(x);
     }
 
-    int N;
-    void** arr = list.toArray(&N);
-    for (int i = 0; i < N; i++) {
-        cout << *((int*)arr[i]) << " ";
-        delete (int*)arr[i];
+    while (list.size() > 0) {
+        int* x = (int*)list.removeFirst();
+        cout << *x << " ";
     }
+    list.removeFirst();
     cout << "\n";
-    delete[] arr;
 
     return 0;
 }

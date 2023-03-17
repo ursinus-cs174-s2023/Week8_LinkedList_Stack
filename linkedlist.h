@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 
+
+
 // Wrapper class around arbitrary object reference 
 // that also holds arrows
 class LinkedNode {

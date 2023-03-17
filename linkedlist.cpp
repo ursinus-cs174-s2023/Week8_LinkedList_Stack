@@ -22,7 +22,11 @@ LinkedList::~LinkedList() {
  * @param obj Object reference to add
  */
 void LinkedList::addFirst(void* obj) {
-    //TODO: Fill this in
+    // Make a new container
+    LinkedNode* node = new LinkedNode(obj);
+    node->next = head;
+    this->head = node;
+    N++;
 }
 
 /**
@@ -43,8 +47,13 @@ void LinkedList::remove(void* obj) {
  */
 void* LinkedList::removeFirst() {
     void* ret = NULL;
-    // TODO: Fill this in
-
+    if (N > 0) {
+        LinkedNode* oldHead = head;
+        ret = head->obj;
+        head = head->next;
+        N--;
+        delete oldHead;
+    }
     return ret;
 }
 
@@ -56,8 +65,18 @@ void* LinkedList::removeFirst() {
  * @return void** 
  */
 void** LinkedList::toArray(int* NOut) {
-    // TODO: Fill this in
-    return NULL;
+    *NOut = N;
+    void** arr = new void*[N];
+    // Cursor points to a LinkedNode that we're
+    // at as we loop through
+    LinkedNode* cursor = this->head;
+    for (int i = 0; i < N; i++) {
+        // Take out the data and copy it into
+        // arr
+        arr[i] = cursor->obj;
+        cursor = cursor->next;
+    }
+    return arr;
 }
 
 
