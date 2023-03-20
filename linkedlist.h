@@ -118,6 +118,20 @@ class LinkedList {
         Printable** toArray(int* N);
 };
 
+class Stack {
+    private:
+        // Local variables
+        int N;
+    public:
+        Stack();
+        ~Stack();
+        void push(Printable* obj);
+        Printable* pop();
+        Printable* peekTop();
+        int size() {return N;}
+
+};
+
 
 
 #endif

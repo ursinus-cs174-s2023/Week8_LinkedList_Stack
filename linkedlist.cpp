@@ -36,7 +36,24 @@ void LinkedList::addFirst(Printable* obj) {
  * @param obj Object reference to remove
  */
 void LinkedList::remove(Printable* obj) {
-    // TODO: Fill this in
+    if (head != NULL) {
+        if (head->obj == obj) {
+            removeFirst();
+        }
+        else {
+            LinkedNode* last = head;
+            while(last->next != NULL && last->next->obj != obj) {
+                last = last->next;
+            }
+            if (last->next != NULL) {
+                // Remove it
+                LinkedNode* toDelete = last->next;
+                last->next = last->next->next;
+                delete toDelete;
+                N--;
+            }
+        }
+    }
 }
 
 /**
