@@ -21,7 +21,7 @@ LinkedList::~LinkedList() {
  * 
  * @param obj Object reference to add
  */
-void LinkedList::addFirst(void* obj) {
+void LinkedList::addFirst(Printable* obj) {
     // Make a new container
     LinkedNode* node = new LinkedNode(obj);
     node->next = head;
@@ -35,7 +35,7 @@ void LinkedList::addFirst(void* obj) {
  * 
  * @param obj Object reference to remove
  */
-void LinkedList::remove(void* obj) {
+void LinkedList::remove(Printable* obj) {
     // TODO: Fill this in
 }
 
@@ -43,10 +43,10 @@ void LinkedList::remove(void* obj) {
  * @brief Remove the first object from the list and return
  * what it was
  * 
- * @return void* 
+ * @return Printable* 
  */
-void* LinkedList::removeFirst() {
-    void* ret = NULL;
+Printable* LinkedList::removeFirst() {
+    Printable* ret;
     if (N > 0) {
         LinkedNode* oldHead = head;
         ret = head->obj;
@@ -62,11 +62,11 @@ void* LinkedList::removeFirst() {
  * the elements in an array
  * 
  * @param N Pointer to size of array
- * @return void** 
+ * @return Printable** 
  */
-void** LinkedList::toArray(int* NOut) {
+Printable** LinkedList::toArray(int* NOut) {
     *NOut = N;
-    void** arr = new void*[N];
+    Printable** arr = new Printable*[N];
     // Cursor points to a LinkedNode that we're
     // at as we loop through
     LinkedNode* cursor = this->head;
@@ -79,20 +79,3 @@ void** LinkedList::toArray(int* NOut) {
     return arr;
 }
 
-
-/////////////////////////////////////
-
-Stack::Stack() {
-    // TODO: Fill this in
-}
-
-void Stack::push(void* obj) {
-    // TODO: Fill this in
-}
-
-void* Stack::pop() {
-    void* ret = NULL;
-    // TODO: Fill this in
-
-    return ret;
-}

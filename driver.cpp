@@ -6,16 +6,17 @@ using namespace std;
 int main() {
     LinkedList list;
     for (int i = 0; i < 15; i++) {
-        int* x = new int;
-        *x = i*i;
+        PrintableInt* x = new PrintableInt(i*i);
         list.addFirst(x);
     }
+    list.addFirst(new PrintableAnimal());
 
     while (list.size() > 0) {
-        int* x = (int*)list.removeFirst();
-        cout << *x << " ";
+        Printable* x = list.removeFirst();
+        x->print();
+        cout << " ";
+        delete x;
     }
-    list.removeFirst();
     cout << "\n";
 
     return 0;
